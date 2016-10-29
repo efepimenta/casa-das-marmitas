@@ -24,6 +24,14 @@ namespace CasaDasMarmitas
             set { _produto = value; }
         }
 
+        private String _tamanho;
+
+        public String Tamanho
+        {
+            get { return _tamanho; }
+            set { _tamanho = value; }
+        }
+
         public void Add()
         {
 

@@ -1,223 +1,110 @@
-﻿/****** Object:  Table [dbo].[Contas]    Script Date: 10/16/2016 17:00:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Contas](
-	[idConstas] [int] NOT NULL,
-	[valorConta] [decimal](6, 2) NOT NULL,
-	[dataVencConta] [date] NOT NULL,
-	[statusConta] [varchar](10) NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[idConstas] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Cliente]    Script Date: 10/16/2016 17:00:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Cliente](
-	[idCliente] [int] NOT NULL,
-	[nomeCliente] [varchar](30) NOT NULL,
-	[telCliente] [varchar](11) NOT NULL,
-	[dNascCliente] [date] NULL,
-	[paisCliente] [varchar](20) NULL,
-	[ufCliente] [char](2) NOT NULL,
-	[cidadeCliente] [varchar](20) NOT NULL,
-	[bairroCliente] [varchar](20) NOT NULL,
-	[lograCliente] [varchar](20) NOT NULL,
-	[numECliente] [varchar](10) NULL,
-	[complCliente] [varchar](30) NULL,
-	[referCliente] [varchar](30) NULL,
-	[emailCliente] [varchar](30) NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[idCliente] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Empresa]    Script Date: 10/16/2016 17:00:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Empresa](
-	[idEmpresa] [int] NOT NULL,
-	[nomeEmpresa] [varchar](30) NOT NULL,
-	[cnpjEmpresa] [int] NOT NULL,
-	[paisEmpresa] [varchar](20) NOT NULL,
-	[ufEmpresa] [char](2) NOT NULL,
-	[cidadeEmpresa] [varchar](20) NOT NULL,
-	[bairroEmpresa] [varchar](20) NOT NULL,
-	[lograEmpresa] [varchar](20) NOT NULL,
-	[numEEmpresa] [varchar](10) NOT NULL,
-	[complEmpresa] [varchar](30) NULL,
-	[referEmpresa] [varchar](30) NULL,
-	[telEmpresa] [varchar](10) NOT NULL,
-	[emailEmpresa] [varchar](30) NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[idEmpresa] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
- CONSTRAINT [unq_cnpEmpresa] UNIQUE NONCLUSTERED 
-(
-	[cnpjEmpresa] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Produto]    Script Date: 10/16/2016 17:00:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Produto](
-	[idProduto] [int] NOT NULL,
-	[nomeProduto] [varchar](20) NOT NULL,
-	[descricaoProduto] [varchar](50) NOT NULL,
-	[tamanhoProduto] [varchar](10) NOT NULL,
-	[precoProduto] [decimal](3, 2) NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[idProduto] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Pedido]    Script Date: 10/16/2016 17:00:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Pedido](
-	[idPedido] [int] NOT NULL,
-	[qtdPedido] [int] NOT NULL,
-	[tamPedido] [varchar](30) NOT NULL,
-	[idProduto] [int] NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[idPedido] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Funcionario]    Script Date: 10/16/2016 17:00:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Funcionario](
-	[idFuncionario] [int] NOT NULL,
-	[nomeFuncionario] [varchar](30) NOT NULL,
-	[idEmpresa] [int] NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[idFuncionario] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Entregador]    Script Date: 10/16/2016 17:00:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Entregador](
-	[idEntregador] [int] NOT NULL,
-	[nomeEntregador] [varchar](30) NOT NULL,
-	[cpfEntregador] [int] NOT NULL,
-	[rgEntregador] [int] NOT NULL,
-	[celEntregador] [varchar](11) NOT NULL,
-	[empresaEntregador] [varchar](30) NOT NULL,
-	[idEmpresa] [int] NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[idEntregador] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
- CONSTRAINT [unq_cpfEntregador] UNIQUE NONCLUSTERED 
-(
-	[cpfEntregador] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
- CONSTRAINT [unq_rgEntregador] UNIQUE NONCLUSTERED 
-(
-	[rgEntregador] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[ContasReceber]    Script Date: 10/16/2016 17:00:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[ContasReceber](
-	[idCliente] [int] NULL,
-	[dataRecContasReceber] [date] NOT NULL
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[ContasPagar]    Script Date: 10/16/2016 17:00:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[ContasPagar](
-	[idEntregador] [int] NULL,
-	[dataPagContasPagar] [date] NOT NULL
-) ON [PRIMARY]
-GO
-/****** Object:  ForeignKey [FK_idEntregador]    Script Date: 10/16/2016 17:00:05 ******/
-ALTER TABLE [dbo].[ContasPagar]  WITH CHECK ADD  CONSTRAINT [FK_idEntregador] FOREIGN KEY([idEntregador])
-REFERENCES [dbo].[Entregador] ([idEntregador])
-GO
-ALTER TABLE [dbo].[ContasPagar] CHECK CONSTRAINT [FK_idEntregador]
-GO
-/****** Object:  ForeignKey [fk_idCliente]    Script Date: 10/16/2016 17:00:05 ******/
-ALTER TABLE [dbo].[ContasReceber]  WITH CHECK ADD  CONSTRAINT [fk_idCliente] FOREIGN KEY([idCliente])
-REFERENCES [dbo].[Cliente] ([idCliente])
-GO
-ALTER TABLE [dbo].[ContasReceber] CHECK CONSTRAINT [fk_idCliente]
-GO
-/****** Object:  ForeignKey [fk_idEmpresa]    Script Date: 10/16/2016 17:00:05 ******/
-ALTER TABLE [dbo].[Entregador]  WITH CHECK ADD  CONSTRAINT [fk_idEmpresa] FOREIGN KEY([idEmpresa])
-REFERENCES [dbo].[Empresa] ([idEmpresa])
-GO
-ALTER TABLE [dbo].[Entregador] CHECK CONSTRAINT [fk_idEmpresa]
-GO
-/****** Object:  ForeignKey [FK_idFunEmpresa]    Script Date: 10/16/2016 17:00:05 ******/
-ALTER TABLE [dbo].[Funcionario]  WITH CHECK ADD  CONSTRAINT [FK_idFunEmpresa] FOREIGN KEY([idEmpresa])
-REFERENCES [dbo].[Empresa] ([idEmpresa])
-GO
-ALTER TABLE [dbo].[Funcionario] CHECK CONSTRAINT [FK_idFunEmpresa]
-GO
-/****** Object:  ForeignKey [FK_idProduto]    Script Date: 10/16/2016 17:00:05 ******/
-ALTER TABLE [dbo].[Pedido]  WITH CHECK ADD  CONSTRAINT [FK_idProduto] FOREIGN KEY([idProduto])
-REFERENCES [dbo].[Produto] ([idProduto])
-GO
-ALTER TABLE [dbo].[Pedido] CHECK CONSTRAINT [FK_idProduto]
-GO
+﻿CREATE TABLE [dbo].[Pessoa] (
+    [Id]           INT           IDENTITY (1, 1) NOT NULL,
+    [telefone]     VARCHAR (15)  NOT NULL,
+    [dtNascimento] DATE          NOT NULL,
+    [pais]         VARCHAR (50)  DEFAULT ('Brasil') NOT NULL,
+    [uf]           CHAR (2)      NOT NULL,
+    [cidade]       VARCHAR (150) NOT NULL,
+    [bairro]       VARCHAR (100) NOT NULL,
+    [endereco]     VARCHAR (150) NOT NULL,
+    [num]          INT           NOT NULL,
+    [complemento]  VARCHAR (100) NULL,
+    [referencia]   VARCHAR (300) NULL,
+    [email]        VARCHAR (120) NOT NULL,
+    PRIMARY KEY ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[Cliente] (
+    [id]       INT           IDENTITY (1, 1) NOT NULL,
+    [nome]     VARCHAR (150) NOT NULL,
+    [cpf]      VARCHAR (20)  NOT NULL,
+    [idPessoa] INT           NOT NULL,
+    PRIMARY KEY ([id] ASC),
+    CONSTRAINT [fk_Cliente] FOREIGN KEY ([idPessoa]) REFERENCES [dbo].[Pessoa] ([Id])
+);
+
+CREATE TABLE [dbo].[Empresa] (
+    [id]       INT           IDENTITY (1, 1) NOT NULL,
+    [nome]     VARCHAR (150) NOT NULL,
+    [cnpj]     VARCHAR (20)  NOT NULL,
+    [idPessoa] INT           NOT NULL,
+    PRIMARY KEY ([id] ASC),
+    CONSTRAINT [unq_Empresa] UNIQUE NON([cnpj] ASC),
+    CONSTRAINT [fk_Empresa] FOREIGN KEY ([idPessoa]) REFERENCES [dbo].[Pessoa] ([Id])
+);
+
+CREATE TABLE [dbo].[Funcionario] (
+    [id]       INT           IDENTITY (1, 1) NOT NULL,
+    [nome]     VARCHAR (150) NOT NULL,
+    [cpf]      VARCHAR (20)  NOT NULL,
+    [idPessoa] INT           NOT NULL,
+    PRIMARY KEY ([id] ASC),
+    CONSTRAINT [FK_Funcionario] FOREIGN KEY ([idPessoa]) REFERENCES [dbo].[Pessoa] ([Id])
+);
+
+CREATE TABLE [dbo].[Entregador] (
+    [id]        INT          IDENTITY (1, 1) NOT NULL,
+    [nome]      VARCHAR (30) NOT NULL,
+    [cpf]       VARCHAR (20) NOT NULL,
+    [rg]        VARCHAR (20) NOT NULL,
+    [celular]   VARCHAR (15) NOT NULL,
+    [idEmpresa] INT          NOT NULL,
+    PRIMARY KEY ([id] ASC),
+    CONSTRAINT [unq_cpfEntregador] UNIQUE NON([cpf] ASC),
+    CONSTRAINT [unq_rgEntregador] UNIQUE NON([rg] ASC),
+    CONSTRAINT [fk_Etregador] FOREIGN KEY ([idEmpresa]) REFERENCES [dbo].[Empresa] ([id])
+);
+
+CREATE TABLE [dbo].[Produto] (
+    [id]        INT            IDENTITY (1, 1) NOT NULL,
+    [nome]      VARCHAR (20)   NOT NULL,
+    [descricao] VARCHAR (50)   NOT NULL,
+    [preco]     DECIMAL (3, 2) NOT NULL,
+    PRIMARY KEY ([id] ASC)
+);
+
+CREATE TABLE [dbo].[Pedido] (
+    [id]         INT          IDENTITY (1, 1) NOT NULL,
+    [quantidade] INT          NOT NULL,
+    [tamanho]    VARCHAR (30) NOT NULL,
+    [idProduto]  INT          NOT NULL,
+    [status]     VARCHAR (10) NOT NULL,
+    PRIMARY KEY ([id] ASC)
+);
+
+CREATE TABLE [dbo].[Produto_Pedido	] (
+    [Id]      INT IDENTITY (1, 1) NOT NULL,
+    [Pedido]  INT NOT NULL,
+    [Produto] INT NOT NULL,
+    PRIMARY KEY ([Id] ASC),
+    CONSTRAINT [FK_Pedido] FOREIGN KEY ([Pedido]) REFERENCES [dbo].[Pedido] ([id]),
+    CONSTRAINT [FK_Produto] FOREIGN KEY ([Produto]) REFERENCES [dbo].[Produto] ([id])
+);
+
+CREATE TABLE [dbo].[Contas] (
+    [id]         INT            IDENTITY (1, 1) NOT NULL,
+    [valor]      DECIMAL (6, 2) NOT NULL,
+    [dataVencto] DATE           NOT NULL,
+    [status]     VARCHAR (10)   NOT NULL,
+    PRIMARY KEY ([id] ASC)
+);
+
+CREATE TABLE [dbo].[ContasPagar] (
+    [id]            INT  IDENTITY (1, 1) NOT NULL,
+    [idEntregador]  INT  NOT NULL,
+    [dataPagamento] DATE NOT NULL,
+    [idConta]       INT  NOT NULL,
+    CONSTRAINT [PK_ContasPagar] PRIMARY KEY ([id] ASC),
+    CONSTRAINT [fk_ContaPagar] FOREIGN KEY ([idConta]) REFERENCES [dbo].[Contas] ([id]),
+    CONSTRAINT [fk_EntreContaPagar] FOREIGN KEY ([idEntregador]) REFERENCES [dbo].[Entregador] ([id])
+);
+
+CREATE TABLE [dbo].[ContasReceber] (
+    [id]              INT  IDENTITY (1, 1) NOT NULL,
+    [idCliente]       INT  NOT NULL,
+    [dataRecebimento] DATE NOT NULL,
+    [idConta]         INT  NOT NULL,
+    CONSTRAINT [PK_ContasReceber] PRIMARY KEY ([id] ASC),
+    CONSTRAINT [fk_ContaReceber] FOREIGN KEY ([idConta]) REFERENCES [dbo].[Contas] ([id]),
+    CONSTRAINT [fk_CliContaPagar] FOREIGN KEY ([idCliente]) REFERENCES [dbo].[Cliente] ([id])
+);

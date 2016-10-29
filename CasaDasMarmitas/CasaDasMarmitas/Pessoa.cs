@@ -16,6 +16,14 @@ namespace CasaDasMarmitas
             set { _cod = value; }
         }
 
+        private string _cep;
+
+        public string Cep
+        {
+            get { return _cep; }
+            set { _cep = value; }
+        }
+
         private String _tel;
 
         public String Telefone
@@ -92,6 +100,21 @@ namespace CasaDasMarmitas
         {
             get { return _email; }
             set { _email = value; }
+        }
+
+        public bool incluir(string query)
+        {
+            return Db.Insert(query);
+        }
+
+        public bool atualizar(string query)
+        {
+            return Db.Update(query);
+        }
+
+        public bool remover(string query)
+        {
+            return Db.Delete(query);
         }
 
     }

@@ -32,14 +32,6 @@ namespace CasaDasMarmitas
             set { _desc = value; }
         }
 
-        private String _tamanho;
-
-        public String Tamanho
-        {
-            get { return _tamanho; }
-            set { _tamanho = value; }
-        }
-
         private double _preco;
 
         public double Preco
